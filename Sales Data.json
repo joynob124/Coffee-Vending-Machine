@@ -1,0 +1,12 @@
+{
+    "resources": {
+        "water": 510,
+        "milk": 965,
+        "coffee": 134
+    },
+    "sales_count": {
+        "total_orders": 1,
+        "Small Espresso (Extra Sweet) + Extra Shot": 1
+    },
+    "profit": 1037
+}
