@@ -1,8 +1,8 @@
 class CoffeeMachine:
   def __init__(self):
     self.resources = {
-      "water": 1000,
-      "milk": 1000,
+      "water": 2000,
+      "milk": 2000,
       "coffee": 1000,
     }
     self.sales_count = {"total_orders": 0}

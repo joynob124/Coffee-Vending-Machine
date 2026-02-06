@@ -31,11 +31,20 @@ menu = Menu()
 coffee_maker = CoffeeMachine()
 money_calculation = MoneyCalculation()
 
+
 load_data()
 
-print("=" * 30)
-print("   COFFEE VENDING MACHINE")
-print("=" * 30 + "\n")
+print(
+r"""
+ ██████╗ ██████╗ ███████╗███████╗███████╗███████╗            ███╗   ███╗ █████╗  ██████╗██╗  ██╗██╗███╗   ██╗███████╗
+██╔════╝██╔═══██╗██╔════╝██╔════╝██╔════╝██╔════╝            ████╗ ████║██╔══██╗██╔════╝██║  ██║██║████╗  ██║██╔════╝
+██║     ██║   ██║█████╗  █████╗  █████╗  █████╗              ██╔████╔██║███████║██║     ███████║██║██╔██╗ ██║█████╗  
+██║     ██║   ██║██╔══╝  ██╔══╝  ██╔══╝  ██╔══╝              ██║╚██╔╝██║██╔══██║██║     ██╔══██║██║██║╚██╗██║██╔══╝  
+╚██████╗╚██████╔╝██║     ██║     ███████╗███████╗            ██║ ╚═╝ ██║██║  ██║╚██████╗██║  ██║██║██║ ╚████║███████╗
+ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝     ╚══════╝╚══════╝            ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝
+                                                                                                                                                                                  
+""")
+
 while True:
     entry = input("Type 'start' to proceed...  ").lower()
     if entry == "report":
@@ -52,7 +61,7 @@ while True:
                 if admin_choice == "1":
                     coffee_maker.report()
                 elif admin_choice == "2":
-                    coffee_maker.resources = {"water": 1000, "milk": 1000, "coffee": 200}
+                    coffee_maker.resources = {"water": 2000, "milk": 2000, "coffee": 200}
                     print("\nAll resources fully refilled!\n")
                 elif admin_choice == "3":
                     money_calculation.report()

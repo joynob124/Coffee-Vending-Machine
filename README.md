@@ -25,5 +25,5 @@ Admin or Management type **report** -> **password** (admin123) instead of typing
 Or,
 Admin or Management type **off** instead of typing *start* to save data in **Sales Data.json** file and turn off the machine. 
 
-Here **report** and **off** are 2 secret commands that customers won't know about. 
+Here **report** and **off** are 2 secret commands that customers won't know. 
  
