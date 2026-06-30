@@ -1,12 +1,18 @@
 {
     "resources": {
-        "water": 510,
-        "milk": 965,
-        "coffee": 134
+        "water": 870,
+        "milk": 1190,
+        "coffee": 960,
+        "sugar": 925
     },
     "sales_count": {
-        "total_orders": 1,
-        "Small Espresso (Extra Sweet) + Extra Shot": 1
+        "total_orders": 6,
+        "Regular Espresso (Normal Sugar)": 1,
+        "Regular Hot chocolate (Normal Sugar)": 1,
+        "Regular Hot chocolate (Normal Sugar) + Extra Shot": 1,
+        "Large Hot chocolate (No Sugar)": 1,
+        "Regular Hot chocolate (Extra Sweet) + Extra Shot": 1,
+        "Regular Hot chocolate (No Sugar)": 1
     },
-    "profit": 1037
+    "profit": 793
 }

@@ -1,0 +1,66 @@
+[
+    {
+        "name": "espresso",
+        "ingredients": {
+            "water": 50,
+            "milk": 0,
+            "coffee": 20
+        },
+        "cost": 105
+    },
+    {
+        "name": "latte",
+        "ingredients": {
+            "water": 150,
+            "milk": 200,
+            "coffee": 25
+        },
+        "cost": 125
+    },
+    {
+        "name": "cappuccino",
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 25
+        },
+        "cost": 135
+    },
+    {
+        "name": "americano",
+        "ingredients": {
+            "water": 200,
+            "milk": 0,
+            "coffee": 20
+        },
+        "cost": 110
+    },
+    {
+        "name": "hot chocolate",
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 0
+        },
+        "cost": 120
+    },
+    {
+        "name": "black tea",
+        "ingredients": {
+            "water": 200,
+            "milk": 100,
+            "coffee": 0
+        },
+        "cost": 85
+    },
+    {
+        "name": "machiatto",
+        "ingredients": {
+            "water": 60,
+            "milk": 60,
+            "coffee": 15,
+            "sugar": 10
+        },
+        "cost": 115
+    }
+]

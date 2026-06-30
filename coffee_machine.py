@@ -1,9 +1,17 @@
 class CoffeeMachine:
+  THRESHOLDS = {
+    "water": 300, 
+    "milk": 200,  
+    "coffee": 50,
+    "sugar": 50 
+  }
+
   def __init__(self):
     self.resources = {
       "water": 2000,
       "milk": 2000,
       "coffee": 1000,
+      "sugar": 1000,
     }
     self.sales_count = {"total_orders": 0}
 
@@ -12,6 +20,7 @@ class CoffeeMachine:
     print(f"Water: {self.resources['water']} ml")
     print(f"Milk: {self.resources['milk']} ml")
     print(f"Coffee: {self.resources['coffee']} g")
+    print(f"Sugar: {self.resources.get('sugar', 0)} g")
     print(f"\nSales: {self.sales_count['total_orders']} orders")
     for drink, count in self.sales_count.items():
       if drink != "total_orders":
@@ -22,7 +31,8 @@ class CoffeeMachine:
       if self.resources.get(item, 0) < amount:
         print(f"Sorry, not enough {item}.")
         return False
-      if self.resources.get(item, 0) < amount + 100:
+      remaining = self.resources.get(item, 0) - amount
+      if remaining < self.THRESHOLDS.get(item, 50):
         print(f"Warning: {item.capitalize()} is running low!")
     return True
 

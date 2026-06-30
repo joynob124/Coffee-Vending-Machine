@@ -12,12 +12,14 @@ def load_data():
         try:
             with open(data_file, 'r') as f:
                 data = json.load(f)
-                coffee_maker.resources = data.get("resources",coffee_maker.resources)
-                coffee_maker.sales_count = data.get("sales",coffee_maker.sales_count)
-                money_calculation.profit = data.get("profit",money_calculation.profit)
+                coffee_maker.resources = data.get("resources", coffee_maker.resources)
+                coffee_maker.sales_count = data.get("sales_count", coffee_maker.sales_count)
+                money_calculation.profit = data.get("profit", money_calculation.profit)
                 print("\n")
-        except:
-            print("Data file not found. Starting again...\n")
+        except json.JSONDecodeError:
+            print("Sales data file is corrupted. Starting with default values...\n")
+        except Exception as e:
+            print(f"Error loading sales data: {e}. Starting with default values...\n")
 def save_data():
     data = {
         "resources": coffee_maker.resources,
@@ -34,7 +36,8 @@ money_calculation = MoneyCalculation()
 
 load_data()
 
-print(
+try:
+    print(
 r"""
  ██████╗ ██████╗ ███████╗███████╗███████╗███████╗            ███╗   ███╗ █████╗  ██████╗██╗  ██╗██╗███╗   ██╗███████╗
 ██╔════╝██╔═══██╗██╔════╝██╔════╝██╔════╝██╔════╝            ████╗ ████║██╔══██╗██╔════╝██║  ██║██║████╗  ██║██╔════╝
@@ -44,6 +47,10 @@ r"""
  ╚═════╝ ╚═════╝ ╚═╝     ╚═╝     ╚══════╝╚══════╝            ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝
                                                                                                                                                                                   
 """)
+except UnicodeEncodeError:
+    print("=========================================================================================")
+    print("                            COFFEE MACHINE SIMULATOR")
+    print("=========================================================================================")
 
 while True:
     entry = input("Type 'start' to proceed...  ").lower()
@@ -52,20 +59,24 @@ while True:
         if admin_entry == Admin_pass:
             print("\nAdmin\n")
             while True:
-                print("Admin Options:")
+                print("\n\nAdmin Options:")
                 print("1. View Resources Report")
                 print("2. Refill All Resources")
                 print("3. View sales and profit/ earnings")
-                print("4. Exit Admin Mode")
+                print("4. Add/Modify Drink Recipes")
+                print("5. Exit Admin Mode")
                 admin_choice = input("\nChoose one: ").strip()
                 if admin_choice == "1":
                     coffee_maker.report()
                 elif admin_choice == "2":
-                    coffee_maker.resources = {"water": 2000, "milk": 2000, "coffee": 200}
-                    print("\nAll resources fully refilled!\n")
+                    coffee_maker.resources = {"water": 2000, "milk": 2000, "coffee": 1000, "sugar": 1000}
+                    save_data()
+                    print("\nAll resources fully refilled and saved!\n")
                 elif admin_choice == "3":
                     money_calculation.report()
                 elif admin_choice == "4":
+                    menu.add_or_modify_recipe_menu()
+                elif admin_choice == "5":
                     print("\nExiting admin mode...\n")
                     break
                 else:
@@ -108,6 +119,11 @@ while True:
             ingredients = {k: int(v * multiplier) for k, v in drink.ingredients.items()}
             if extra_shot == "Yes (+Tk 20)":
                 ingredients["coffee"] = ingredients.get("coffee", 0) + 10
+            # Calculate and add sugar ingredients
+            sugar_amounts = {"No Sugar": 0, "Normal Sugar": 15, "Extra Sweet": 30}
+            sugar_used = int(sugar_amounts.get(sugar, 0) * multiplier)
+            if sugar_used > 0:
+                ingredients["sugar"] = sugar_used
             name = f"{size} {drink.name.capitalize()} ({sugar})"
             if extra_shot == "Yes (+Tk 20)":
                 name += " + Extra Shot"
